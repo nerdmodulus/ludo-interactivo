@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludo Trivia Interactivo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+
+    <div id="login-screen" class="screen">
+        <div class="login-box">
+            <h1>🎲 Ludo Preguntas 🎲</h1>
+            <p>Selecciona tu rol para entrar a la partida:</p>
+            <select id="role-select">
+                <option value="Rojo">🔴 Jugador Rojo</option>
+                <option value="Verde">🟢 Jugador Verde</option>
+                <option value="Amarillo">🟡 Jugador Amarillo</option>
+                <option value="Azul">🔵 Jugador Azul</option>
+                <option value="Espectador">🖥️ Espectador (Proyector)</option>
+            </select>
+            <button id="btn-enter">Entrar al Juego</button>
+        </div>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        <div class="header-bar">
+            <h2>Tu Rol: <span id="user-role-display">-</span></h2>
+            <div id="turn-indicator">Esperando inicio...</div>
+        </div>
+
+        <div class="main-container">
+            <div id="ludo-board">
+                </div>
+
+            <div id="control-panel">
+                <div class="dice-section">
+                    <div id="dice-view">⚀</div>
+                    <button id="btn-roll" disabled>Lanzar Dado</button>
+                </div>
+                
+                <div class="scoreboard">
+                    <h3>Posiciones</h3>
+                    <p class="p-rojo">🔴 Rojo: Casilla <span id="pos-Rojo">0</span>/40</p>
+                    <p class="p-verde">🟢 Verde: Casilla <span id="pos-Verde">0</span>/40</p>
+                    <p class="p-amarillo">🟡 Amarillo: Casilla <span id="pos-Amarillo">0</span>/40</p>
+                    <p class="p-azul">🔵 Azul: Casilla <span id="pos-Azul">0</span>/40</p>
+                </div>
+
+                <div id="admin-controls" class="hidden">
+                    <button id="btn-reset" class="danger-btn">Reiniciar Partida</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="question-modal" class="modal hidden">
+        <div class="modal-content">
+            <div id="modal-turn-title">Pregunta para el jugador</div>
+            <h3 id="question-text">¿Cargando pregunta?</h3>
+            <div class="options-grid">
+                <button class="opt-btn" data-opt="A">A) <span id="optA"></span></button>
+                <button class="opt-btn" data-opt="B">B) <span id="optB"></span></button>
+                <button class="opt-btn" data-opt="C) ">C) <span id="optC"></span></button>
+                <button class="opt-btn" data-opt="D">D) <span id="optD"></span></button>
+            </div>
+            <div id="modal-feedback" class="hidden"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
