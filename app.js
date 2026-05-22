@@ -3,7 +3,7 @@
 // ==========================================
 const firebaseConfig = {
     apiKey: "AIzaSyBr5OcwH9jKdoBVr6Dp_hJto5oNHEbJGtI",
-    authDomain: "ludo-preguntas.firebaseapp.com,
+    authDomain: "ludo-preguntas.firebaseapp.com",
     databaseURL: "https://ludo-preguntas-default-rtdb.firebaseio.com/",
     projectId: "ludo-preguntas",
     storageBucket: "ludo-preguntas.firebasestorage.app",
