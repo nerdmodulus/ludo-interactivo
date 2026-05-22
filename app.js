@@ -4,7 +4,7 @@
 const firebaseConfig = {
     apiKey: "AIzaSyBr5OcwH9jKdoBVr6Dp_hJto5oNHEbJGtI",
     authDomain: "ludo-preguntas.firebaseapp.com,
-    databaseURL: "TU_DATABASE_URL_AQUÍ",
+    databaseURL: "https://ludo-preguntas-default-rtdb.firebaseio.com/",
     projectId: "ludo-preguntas",
     storageBucket: "ludo-preguntas.firebasestorage.app",
     messagingSenderId: "154849132864",
