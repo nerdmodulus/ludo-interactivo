@@ -71,6 +71,29 @@ async function cargarPreguntasDesdeExcel() {
             }
         }
         console.log("Exito! " + bancoPreguntas.length + " preguntas cargadas.");
+
+        // Fix: re-evaluar estado de Firebase ahora que las preguntas ya están listas
+        db.once("value", function(snapshot) {
+            const data = snapshot.val();
+            if (!data) return;
+            if (data.estado === "respondiendo" && data.preguntaActual >= 0) {
+                const jugadorDeTurno = turnos[data.turnoIdx];
+                const qData = bancoPreguntas[data.preguntaActual];
+                document.getElementById("question-text").innerText = qData.pregunta;
+                document.getElementById("optA").innerText = qData.A;
+                document.getElementById("optB").innerText = qData.B;
+                document.getElementById("optC").innerText = qData.C;
+                document.getElementById("optD").innerText = qData.D;
+                document.getElementById("modal-turn-title").innerText = "Pregunta para el Jugador " + jugadorDeTurno;
+                const botonesOpcion = document.querySelectorAll(".opt-btn");
+                botonesOpcion.forEach(function(btn) {
+                    btn.disabled = (miRol !== jugadorDeTurno);
+                    btn.onclick = function() { evaluarRespuesta(btn.dataset.opt, qData.correcta); };
+                });
+                document.getElementById("question-modal").classList.remove("hidden");
+            }
+        });
+
     } catch (error) {
         console.error("Error cargando el Excel:", error);
         alert("No se pudo leer el Excel. Asegurate de haberlo publicado web como CSV.");
