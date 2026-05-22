@@ -11,7 +11,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database().ref("ludoTrivia");
 
-const EXCEL_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSaJaro7CAEcOrUyYxHjAs0cdwbJAWGic8BoDgisqs6ssxlEzWb2XArVsKiCfAJ0llAn6ncEnZqWIjy/pub?output=csv";
+const EXCEL_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSaJaro7CAEcOrUyYxHjAs0cdwbJAWGic8BoDgisqs6ssxlEzWb2XArVsKiCfAJ0llAn6ncEnZqWIjy/pub?gid=0&single=true&output=csv";
 
 let bancoPreguntas = [];
 let miRol = "";
